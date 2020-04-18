@@ -1,4 +1,4 @@
 import config
-from src import *
+from webapi import *
 
-app.run(host=config.app_host, port=config.app_port)
+app.run(host=config.flask_setting.get("host"), port=config.flask_setting.get("port"))
