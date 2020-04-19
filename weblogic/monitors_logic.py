@@ -1,11 +1,10 @@
 import hashlib
-import time
-from weblogic import *
+from webdata import monitors_data
 
 
 def get_monitors():
-	sql = "SELECT * from Monitors"
-	return dict({"monitors": database_instance.fetchall(sql)})
+	payload = monitors_data.list_monitors()
+	return payload
 
 
 def post_monitor(guid):
@@ -17,22 +16,8 @@ def get_monitor(guid):
 
 
 def post_monitor_create(json_body):
-	try:
-		name = json_body.monitor.name
-		location = json_body.monitor.location
-		hash_instance = hashlib.blake2s(digest_size=32)
-		hash_instance.update(location)
-		hash_instance.update(name)
-		guid = hash_instance.hexdigest()
-		sql = "INSERT INTO Monitors (SKEY, GUID, name, location) VALUES (%s, %s, %s, %s)"
-		val = (None, guid, name, location)
-		result = database_instance.execute(sql, val)
-		if result.rowcount == 1:
-			return get_monitors()
-	except IndexError as e:
-		return dict({"code": "error", "error": e})
-	except Exception as e:
-		return dict({"code": "error", "error": e})
+	payload = monitors_data.create_monitor(json_body)
+	return payload
 
 
 def delete_monitor(guid):
