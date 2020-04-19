@@ -1,15 +1,4 @@
-import config
-from common.ClassDBConnection import ClassDBConnection
-
-database_instance = ClassDBConnection(
-	host=config.db_setting.get("host"),
-	port=config.db_setting.get("port"),
-	username=config.db_setting.get("user"),
-	password=config.db_setting.get("password"),
-	database=config.db_setting.get("database")
-)
-
-from . import monitors
-from . import videos
-from . import users
-from . import schedule
+from . import monitors_logic
+from . import videos_logic
+from . import users_logic
+from . import schedule_logic
