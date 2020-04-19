@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `billdb`.`Videos` (
   INDEX `fk_Videos_users_idx` (`users_SKEY` ASC) VISIBLE,
   CONSTRAINT `fk_Videos_users`
     FOREIGN KEY (`users_SKEY`)
-    REFERENCES `billdb`.`users` (`SKEY`)
+    REFERENCES `billdb`.`Users` (`SKEY`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
