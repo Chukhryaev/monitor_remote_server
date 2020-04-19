@@ -20,4 +20,4 @@ def guid_monitor(guid):
 
 @app.route('/monitor', methods=['POST'])
 def post_monitor():
-	return monitors.post_monitor_create()
+	return monitors.post_monitor_create(request.json)
