@@ -1,7 +1,7 @@
 import paho.mqtt.client as mqtt
 
 
-class MqttWrapper:
+class ClassMqttConnection:
     def __init__(self, client_id, host, port=1883, keep_alive=60):
         self.client = mqtt.Client(client_id)
 

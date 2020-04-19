@@ -31,12 +31,14 @@ class ClassDBConnection:
 			self.connect()
 		self.cursor.execute(sql, value)
 		self.connection.commit()
+		return self.cursor
 
 	def executemany(self, sql, values):
 		if self.connection is None:
 			self.connect()
 		self.cursor.executemany(sql, values)
 		self.connection.commit()
+		return self.cursor
 
 	def fetchall(self, sql):
 		if self.connection is None:
