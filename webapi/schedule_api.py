@@ -16,6 +16,6 @@ def guid_schedules(guid):
 		return schedule.post_schedule(guid)
 
 
-@app.route("/schedule/<date>")
+@app.route("/schedule/<date>", methods=["POST"])
 def create_schedule(date):
 	return schedule.create_schedule(date)
