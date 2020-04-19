@@ -16,3 +16,21 @@
   ]
 }
 </pre>
+
+
+Методы взимодействия с мониторами
+
+<pre>
+GET "/monitors"
+Получает список всех мониторов
+
+<pre>
+"monitors": [
+    {
+        "guid": {guid},
+        "name": {name},
+        "location": {location}
+    }
+]
+</pre>
+</pre>
