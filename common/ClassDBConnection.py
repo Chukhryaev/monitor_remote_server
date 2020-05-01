@@ -40,16 +40,16 @@ class ClassDBConnection:
 		self.connection.commit()
 		return self.cursor
 
-	def fetchall(self, sql):
+	def fetchall(self, sql, val=None):
 		if self.connection is None:
 			self.connect()
-		self.cursor.execute(sql)
+		self.cursor.execute(sql, val)
 		return self.cursor.fetchall()
 
-	def fetchone(self, sql):
+	def fetchone(self, sql, val=None):
 		if self.connection is None:
 			self.connect()
-		self.cursor.execute(sql)
+		self.cursor.execute(sql, val)
 		return self.cursor.fetchone()
 
 	def close(self):
