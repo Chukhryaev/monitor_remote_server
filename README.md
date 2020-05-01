@@ -1,4 +1,10 @@
 # monitor_remote_server
+
+Пример расписания
+
+_**step** - Шаг слота в секундах_
+
+
 <pre>
 {
   "step": "300",
@@ -23,6 +29,7 @@
 <pre>
 GET "/monitors"
 Получает список всех мониторов
+</pre>
 
 <pre>
 "monitors": [
@@ -32,5 +39,4 @@ GET "/monitors"
         "location": {location}
     }
 ]
-</pre>
 </pre>

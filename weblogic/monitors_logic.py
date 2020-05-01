@@ -1,4 +1,3 @@
-import hashlib
 from webdata import monitors_data
 
 

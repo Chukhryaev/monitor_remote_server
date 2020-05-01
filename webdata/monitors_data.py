@@ -35,11 +35,11 @@ def create_monitor(json_body):
 
 
 if __name__ == "__main__":
-    json_body = {
+    body = {
         "monitor": {
             "name": "Monitor_dev_test",
             "location": f"EUROPA{str(datetime.datetime.today())}"
         }
     }
-    print(create_monitor(json_body))
+    print(create_monitor(body))
     print(list_monitors())
