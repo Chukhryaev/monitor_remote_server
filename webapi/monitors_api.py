@@ -13,7 +13,7 @@ def guid_monitor(guid):
 	if request.method == "GET" and guid:
 		return monitors_logic.get_monitor(guid)
 	if request.method == "POST" and guid:
-		return monitors_logic.post_monitor(guid)
+		return monitors_logic.post_monitor(guid, request.json)
 	if request.method == "DELETE" and guid:
 		return monitors_logic.delete_monitor(guid)
 
