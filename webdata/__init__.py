@@ -11,3 +11,6 @@ database_instance = ClassDBConnection(
 )
 
 from . import monitors_data
+from . import schedule_data
+from . import users_data
+from . import videos_data
