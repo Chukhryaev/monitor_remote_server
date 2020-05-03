@@ -46,10 +46,7 @@ def create_monitor(json_body):
         monitor = json_body.get("monitor")
         name = monitor.get("name")
         location = monitor.get("location")
-        hash_instance = hashlib.blake2s(digest_size=16)
-        hash_instance.update(location.encode("utf-8"))
-        hash_instance.update(name.encode("utf-8"))
-        guid = hash_instance.hexdigest()
+        guid = hashlib.md5(f"{location}{name}".encode()).hexdigest()
         sql = "INSERT INTO Monitors (SKEY, GUID, name, location) VALUES (%s, %s, %s, %s)"
         val = (None, guid, name, location)
         result = database_instance.execute(sql, val)
@@ -75,7 +72,7 @@ if __name__ == "__main__":
             "location": f"EUROPA{str(datetime.datetime.today())}"
         }
     }
-    guid = "e58eea456388e3abf4429d3ad06094c4"
+    guid = "a448c98eca81d4c6ebe45baa32bb6d04"
     update_body = {
         "name": "NOT TEST DEV MONITOR",
         "location": f"EUROPA{str(datetime.datetime.today())}"
