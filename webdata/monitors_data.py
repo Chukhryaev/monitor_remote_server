@@ -32,6 +32,7 @@ def get_monitor(guid):
         sql = "SELECT GUID, name, location FROM Monitors WHERE GUID = %s"
         val = [guid]
         result = database_instance.fetchone(sql, val)
+        print(result)
         return dict({"code": "get.monitor", "monitor": {
             "guid": result[0],
             "name": result[1],
@@ -46,7 +47,7 @@ def create_monitor(json_body):
         monitor = json_body.get("monitor")
         name = monitor.get("name")
         location = monitor.get("location")
-        guid = hashlib.md5(f"{location}{name}".encode()).hexdigest()
+        guid = hashlib.md5(f"{location}{name}".encode()).hexdigest().upper()
         sql = "INSERT INTO Monitors (SKEY, GUID, name, location) VALUES (%s, %s, %s, %s)"
         val = (None, guid, name, location)
         result = database_instance.execute(sql, val)
@@ -72,11 +73,16 @@ if __name__ == "__main__":
             "location": f"EUROPA{str(datetime.datetime.today())}"
         }
     }
-    guid = "a448c98eca81d4c6ebe45baa32bb6d04"
+    monitor = body.get("monitor")
+    name = monitor.get("name")
+    location = monitor.get("location")
+    # guid = '1587252284.0'
+    guid = hashlib.md5(f"{location}{name}".encode()).hexdigest().upper()
     update_body = {
         "name": "NOT TEST DEV MONITOR",
         "location": f"EUROPA{str(datetime.datetime.today())}"
     }
+
     print(create_monitor(body))
     print(get_monitor(guid))
     print(update_monitor(guid, update_body))
