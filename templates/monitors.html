@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-3">
+    <div class=".col-md m-2">Monitor name</div>
+    <div class=".col-md m-2">Monitor location</div>
+</div>
+{% for monitor in data.monitors %}
+<div class="row mb-3">
+    <div class=".col-md m-2">{{monitor.name}}</div>
+    <div class=".col-md m-2">{{monitor.location}}</div>
+    <div class=".col-md m-2"><a href="monitor/{{monitor.guid}}" class="btn btn-primary btn-lg active" role="button">Details</a></div>
+</div>
+{% endfor %}
+
+
+{% endblock %}
