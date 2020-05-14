@@ -8,7 +8,13 @@ def list_schedules():
 
 
 def get_schedule(guid):
-	pass
+	try:
+		sql = "SELECT GUID, body, date FROM Schedule WHERE GUID = %s"
+		val = [guid]
+		result = database_instance.fetchone(sql, val)
+		return result
+	except Exception as e:
+		return dict({"code": "error", "error": e})
 
 
 def update_schedule(guid, monitor_guid, json_body):

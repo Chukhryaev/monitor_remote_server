@@ -13,9 +13,12 @@ def guid_schedules(guid):
 	if request.method == "GET":
 		return schedule_logic.get_schedule(guid)
 	if request.method == "POST":
-		return schedule_logic.post_schedule(guid)
+		return schedule_logic.post_schedule(guid, request.json)
 
 
-@app.route("/schedule/<date>", methods=["POST"])
-def create_schedule(date):
-	return schedule_logic.create_schedule(date)
+@app.route("/monitor/<guid>/schedule/<date>", methods=["GET", "POST"])
+def monitor_date_schedule(guid, date):
+	if request.method == "GET":
+		return schedule_logic.get_monitor_schedule_by_date(guid, date)
+	if request.method == "POST":
+		return schedule_logic.update_monitor_schedule_by_date(guid, date, request.json)
